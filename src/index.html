@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./styles/main.css">
+    <title>Todo APP</title>
+</head>
+<body>
+<div class="mainContainer">
+    <h1 class="u-padding-left-40px">Todo app</h1>
+    <form class="c-todo__form u-padding-left-40px u-padding-right-40px">
+        <label for="todoTitle">Title</label>
+        <br>
+
+        <input type="text" id="todoTitle" name="todoTitle" class="u-width-100percent">
+        <br>
+        <br>
+
+        <label for="todoDescription">Description</label>
+        <br>
+
+        <textarea id="todoDescription" name="todoDescription" rows="4" class="u-width-100percent"></textarea>
+        <br>
+        <br>
+
+        <label for="todoCategory">Choose a category:</label>
+        <br>
+
+        <select name="todoCategory" id="todoCategory" class="u-width-50percent"></select>
+        <br>
+        <br>
+
+        <button id="todoFormSubmit" type="button">Submit</button>
+    </form>
+    <br>
+
+    <hr />
+    <br>
+
+    <ul id="todoList" class="u-list-item-no-styling u-padding-right-40px"></ul>
+</div>
+
+
+</body>
+</html>
