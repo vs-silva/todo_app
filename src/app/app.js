@@ -1,5 +1,10 @@
 (function(Global){
 
-    Global.App = {};
+    Global.App = {
+        business: {
+            entities:{}
+        },
+        repositories: {},
+    };
 
 }(window));
