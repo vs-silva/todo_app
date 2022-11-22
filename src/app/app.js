@@ -9,6 +9,7 @@
             entities:{}
         },
         repositories: {},
+        client:{}
     };
 
 }(window));

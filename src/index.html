@@ -8,7 +8,7 @@
 <body>
 <div class="mainContainer">
     <h1 class="u-padding-left-40px">Todo app</h1>
-    <form class="c-todo__form u-padding-left-40px u-padding-right-40px">
+    <form id="todoInputForm" class="c-todo__form u-padding-left-40px u-padding-right-40px">
         <label for="todoTitle">Title</label>
         <br>
 
@@ -26,7 +26,7 @@
         <label for="todoCategory">Choose a category:</label>
         <br>
 
-        <select name="todoCategory" id="todoCategory" class="u-width-50percent"></select>
+        <select name="todoCategory" id="todoCategory" class="u-width-100percent"></select>
         <br>
         <br>
 
@@ -54,6 +54,8 @@
     <script src="app/repository/adapters/baseArrayRepositoryAdapter.js"></script>
     <script src="app/repository/adapters/todoArrayRepositoryAdapter.js"></script>
     <script src="app/repository/adapters/priorityArrayRepositoryAdapter.js"></script>
+    <script src="app/client/ui.js"></script>
+    <script src="app/client/adapter.js"></script>
     <script src="index.js"></script>
 
 
