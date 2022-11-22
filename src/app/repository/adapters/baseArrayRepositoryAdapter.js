@@ -6,30 +6,30 @@
             return;
         }
 
-        const repository = dataSource[targetDataset];
+        const collection = dataSource[targetDataset];
 
         return {
             getAll: () => {
-                return repository;
+                return collection;
             },
             getById: (id) => {
-                return repository.find(x => x.id.toString() === id.toString());
+                return collection.find(x => x.id.toString() === id.toString());
             },
             getBy: (fn) => {
-                return fn(repository);
+                return fn(collection);
             },
             create: (entity) => {
-                repository.push(entity);
+                collection.push(entity);
             },
             update: (id, entity) => {
-                const entityToUpdate = repository.find(x => x.id.toString() === id.toString());
+                const entityToUpdate = collection.find(x => x.id.toString() === id.toString());
                 entityToUpdate.title = entity.title;
                 entityToUpdate.description = entity.description;
                 entityToUpdate.priority = entity.priority;
             },
             remove: (id) => {
-                const entityToDelete = repository.findIndex(x => x.id.toString() === id.toString());
-                repository.splice(entityToDelete, 1);
+                const entityToDelete = collection.findIndex(x => x.id.toString() === id.toString());
+                collection.splice(entityToDelete, 1);
             }
         };
     }

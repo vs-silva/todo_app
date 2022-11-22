@@ -5,7 +5,9 @@
         getTodoById: null,
         getTodosByPriority: null,
         saveTodo: null,
-        removeTodo: null
+        removeTodo: null,
+        getAllPriorities: null,
+        getPriorityById: null
     };
 
 }(window));

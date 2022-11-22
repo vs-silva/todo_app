@@ -1,13 +1,10 @@
 (function(Global){
 
-    function service (driverPort = null, repository = null) {
+    function service ({driverPort, reader, writer} = {}) {
 
-        if(!driverPort || !repository) {
+        if(!driverPort || !reader || !writer) {
             return;
         }
-
-        const writer = Global.App.business.ports.driven.writer(repository);
-        const reader = Global.App.business.ports.driven.reader(repository);
 
         driverPort.getAllTodos = () => {
             return reader.getAll();
@@ -18,7 +15,7 @@
         };
 
         driverPort.getTodosByPriority = (priority) => {
-            throw 'NotImplemented';
+            return reader.getBy( x => x.filter(x => x.priority.toString() === priority.toString()));
         };
 
         driverPort.saveTodo = (todoDto) => {
@@ -56,8 +53,6 @@
         };
 
         return {
-            //writer: Global.App.business.ports.driven.writer(repository),
-            //reader: Global.App.business.ports.driven.reader(repository),
             getAllTodos: driverPort.getAllTodos,
             getTodoById: driverPort.getTodoById,
             getTodosByPriority: driverPort.getTodosByPriority,
@@ -73,6 +68,6 @@
         });
     }
 
-    Global.App.business.service = service;
+    Global.App.business.todoService = service;
 
 }(window));

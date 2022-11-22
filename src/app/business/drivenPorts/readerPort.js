@@ -12,6 +12,9 @@
             },
             getById: ({id}) => {
                 return repository.getById(id);
+            },
+            getBy: (fn) => {
+                return repository.getBy(fn);
             }
         };
     }
