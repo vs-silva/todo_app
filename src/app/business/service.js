@@ -7,21 +7,8 @@
         }
 
         return {
-            getAll: () => {
-                return repository.getAll();
-            },
-            getById: ({id}) => {
-                return repository.getById(id);
-            },
-            create: ({entity}) => {
-                repository.create(entity);
-            },
-            update: ({id, entity}) => {
-                repository.update(id, entity);
-            },
-            remove: ({id}) => {
-                repository.remove(id);
-            }
+            writer: Global.App.business.ports.driven.writer(repository),
+            reader: Global.App.business.ports.driven.reader(repository)
         };
     }
 

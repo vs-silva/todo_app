@@ -1,15 +1,24 @@
 (function(Global){
 
     Global.App.database = {
-        todosCollection: [
+        todosCollection: [],
+        prioritiesCollection: [
             {
                 id: 1,
-                title: 'todo sample title',
-                description: 'todo sample description',
-                priority: 'priority A'
+                type: 'A',
+                description: 'High Priority'
+            },
+            {
+                id: 2,
+                type: 'B',
+                description: 'Medium Priority'
+            },
+            {
+                id: 3,
+                type: 'C',
+                description: 'Low Priority'
             }
-        ],
-        prioritiesCollection: []
+        ]
     };
 
 }(window));
