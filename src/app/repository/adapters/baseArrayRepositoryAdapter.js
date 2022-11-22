@@ -21,9 +21,11 @@
             create: (entity) => {
                 repository.push(entity);
             },
-            update: (id, entity, fn) => {
-                const entityToUpdate = this.getById(id);
-                fn(entityToUpdate, repository);
+            update: (id, entity) => {
+                const entityToUpdate = repository.find(x => x.id.toString() === id.toString());
+                entityToUpdate.title = entity.title;
+                entityToUpdate.description = entity.description;
+                entityToUpdate.priority = entity.priority;
             },
             remove: (id) => {
                 const entityToDelete = repository.findIndex(x => x.id.toString() === id.toString());
