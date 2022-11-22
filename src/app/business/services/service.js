@@ -6,9 +6,6 @@
             return;
         }
 
-        const writer = Global.App.business.ports.driven.writer(repository);
-        const reader = Global.App.business.ports.driven.reader(repository);
-
         const services = {
             todoService: Global.App.business.todoService,
             priorityService: Global.App.business.priorityService
@@ -16,8 +13,8 @@
 
         return services[serviceName]({
             driverPort: driverPort,
-            reader: reader,
-            writer: writer
+            reader: Global.App.business.ports.driven.reader(repository),
+            writer: Global.App.business.ports.driven.writer(repository)
         });
     }
 

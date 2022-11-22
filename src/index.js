@@ -17,6 +17,8 @@
     console.log(todoService);
     console.log(priorityService);
 
+    console.log(priorityService.getAllPriorities());
+
 /*
     //const priorityRepository = Global.App.repositories.priorityRepository;
     const todoService = Global.App.business.service({
