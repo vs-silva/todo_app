@@ -1,71 +1,135 @@
 (function(Global){
 
-    function adapter({ui, todoService, priorityService}) {
+    function adapter({todoService, priorityService}) {
 
-        if(!ui || !todoService || !priorityService) {
+        if(!todoService || !priorityService) {
             return;
         }
 
-        console.log(ui);
-        console.log(todoService);
-        console.log(priorityService);
+        const elements = {
+            priorityContainer: null,
+            todosContainer: null,
+            submitTrigger: null,
+            titleContainer: null,
+            descriptionContainer: null,
+            activePriority: null
+        };
 
+        function init({
+            priorityContainer = null,
+            todosContainer = null,
+            submitTrigger = null,
+            titleContainer = null,
+            descriptionContainer = null
 
-
-
-        function updatePrioritiesUI({priorities = null}) {
-
-            if(!priorities) {
-                return;
+        }) {
+            if(!priorityContainer ||
+               !todosContainer ||
+               !submitTrigger ||
+               !titleContainer ||
+               !descriptionContainer
+            ) {
+                throw 'please provide UI containers';
             }
 
-            const prioritySelector = ui.form.category;
+            elements.priorityContainer = priorityContainer;
+            elements.todosContainer = todosContainer;
+            elements.submitTrigger = submitTrigger;
+            elements.titleContainer = titleContainer;
+            elements.descriptionContainer = descriptionContainer;
+
+            loadPriorities();
+            elements.submitTrigger.addEventListener('click', createUpdateTodo);
+        }
+
+        function loadPriorities() {
+            updatePrioritiesUI({
+                priorities: priorityService.getAllPriorities(),
+                container: elements.priorityContainer
+            });
+        }
+
+        function updatePrioritiesUI({priorities = null, container = null}) {
+
+            if(!priorities || !container) {
+                return;
+            }
 
             for (const priority of priorities) {
                 const optionItem = document.createElement('option');
                 optionItem.setAttribute('id', priority.id);
-                optionItem.setAttribute('value', priority.type);
+                optionItem.setAttribute('value', priority.description);
                 optionItem.innerText = `${priority.description}`;
-                prioritySelector.appendChild(optionItem);
+                container.appendChild(optionItem);
             }
 
-            prioritySelector.addEventListener('change', loadTodosByPriority);
+            elements.activePriority = container.children[0];
+            container.addEventListener('change', event =>{
+                loadTodosByPriority({
+                    selectedOption: event.target[event.target.selectedIndex]
+                });
+            });
         }
 
-        function updateTodosUI({todos = null}) {
+        function loadTodosByPriority({selectedOption}) {
+            elements.activePriority = selectedOption;
+            const priority = priorityService.getPriorityById(selectedOption['id']);
+            updateTodosUI({
+                todos: todoService.getTodosByPriority(priority.description),
+                container: elements.todosContainer
+            });
+        }
 
-            if(!todos) {
+        function updateTodosUI({todos = null, container = null}) {
+
+            if(!todos || !container) {
                 return;
             }
 
-            const todosListSelector = ui.list;
+            if(container.children.length > 0){
+                container.innerHTML = '';
+            }
 
             for (const todo of todos) {
                 const listItem = document.createElement('li');
                 listItem.setAttribute('id', todo.id);
                 listItem.setAttribute('class', 'u-margin-bottom-20px');
-                listItem.innerText = `${todo.title}\n${todo.description}\n(${todo.priority})\n`;
+                listItem.innerText = `(${todo.priority})\n${todo.title}\n${todo.description}`;
                 //add edit and delete options
 
-                todosListSelector.appendChild(listItem);
+                container.appendChild(listItem);
             }
         }
 
-        function loadTodosByPriority(event) {
-            const selectedOptionId = event.target[event.target.selectedIndex]['id'];
-            const priority = priorityService.getPriorityById(selectedOptionId);
+        function createUpdateTodo(event) {
+
+            todoService.saveTodo({
+                title: elements.titleContainer.value,
+                description: elements.descriptionContainer.value,
+                priority: elements.activePriority.value
+            });
+
+            loadTodosByPriority({
+                selectedOption: elements.activePriority
+            });
+            clearInputElements();
+        }
+
+        function loadAllTodos() {
             updateTodosUI({
-                todos: todoService.getTodosByPriority(priority.description)
+                todos: todoService.getAllTodos(),
+                container: elements.todosContainer
             });
         }
 
-        function loadPriorities() {
-            updatePrioritiesUI({
-                priorities: priorityService.getAllPriorities()
-            });
+        function clearInputElements() {
+           elements.titleContainer.value = '';
+           elements.descriptionContainer.value = '';
         }
 
-        loadPriorities();
+        return {
+            init
+        };
     }
 
     Global.App.client.adapter = adapter;
