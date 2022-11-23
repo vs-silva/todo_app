@@ -24,7 +24,7 @@
                 priorities: adapter.loadPriorities()
             });
 
-            ui.form.submitButton.addEventListener('click', event => {
+            ui.form.submitButton.addEventListener('click', () => {
                 createUpdateTodo();
                 loadTodosByPriority({
                     priorityValue: activePriority.value
@@ -105,10 +105,24 @@
             editOption.setAttribute('class', 'u-padding-right-10px u-cursor-pointer');
             editOption.innerHTML = 'edit';
             editOption.addEventListener('click', () => {
-                console.log(targetElement);
-                console.log('ready to edit');
+
+                const todo = adapter.loadTodoById({
+                    id: targetElement.getAttribute('id')
+                });
+
+                ui.form.id.setAttribute('id', todo.id);
+                ui.form.title.value = todo.title;
+                ui.form.description.value = todo.description;
+
+                addEditCancelOption({
+                    targetElement: targetElement
+                });
             });
             targetElement.appendChild(editOption);
+        }
+
+        function addEditCancelOption({targetElement}) {
+
         }
 
         function addDeleteOption({targetElement}) {
@@ -145,7 +159,6 @@
             ui.form.title.value = '';
             ui.form.description.value = '';
         }
-
 
         init();
     }

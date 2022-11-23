@@ -10,7 +10,7 @@
             return reader.getAll();
         };
 
-        driverPort.getTodoById = (id) => {
+        driverPort.getTodoById = ({id}) => {
             return reader.getById({id: id});
         };
 

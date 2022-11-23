@@ -10,6 +10,12 @@
             return priorityService.getAllPriorities();
         }
 
+        function loadTodoById({id}) {
+            return todoService.getTodoById({
+                id: id
+            });
+        }
+
         function loadTodosByPriority({priority}) {
             return todoService.getTodosByPriority(priority);
         }
@@ -36,6 +42,7 @@
         return {
             loadPriorities,
             loadTodosByPriority,
+            loadTodoById,
             saveTodo,
             removeTodo
         };
