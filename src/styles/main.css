@@ -14,9 +14,14 @@
     width: 100%;
 }
 
+.u-width-90percent{
+    width: 90%;
+}
+
 .u-width-50percent{
     width: 50%;
 }
+
 
 .u-margin-bottom-20px{
     margin-bottom: 20px;
@@ -26,8 +31,11 @@
     padding-left: 10px;
 }
 
-.u-padding-rigth-10px
-{
+.u-padding-top-10px{
+    padding-top: 10px;
+}
+
+.u-padding-right-10px {
     padding-right: 10px;
 }
 
@@ -36,11 +44,20 @@
 }
 
 body{
-    margin-top: 10px;
+    margin-top: 40px;
+    background-color: deepskyblue;
+    font-family: sans-serif;
 }
 
 .mainContainer {
     width: 40%;
     min-width: 300px;
     margin: 0 auto;
+    background-color: white;
+    border-radius: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border: 1px solid grey;
+    box-shadow: 0px 0px 10px grey;
+
 }

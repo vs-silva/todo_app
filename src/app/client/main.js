@@ -103,7 +103,7 @@
         function addEditOption({targetElement}) {
             const editOption = document.createElement('span');
             editOption.setAttribute('class', 'u-padding-right-10px u-cursor-pointer');
-            editOption.innerHTML = 'edit';
+            editOption.innerHTML = 'Edit';
             editOption.addEventListener('click', () => {
 
                 const todo = adapter.loadTodoById({
@@ -124,7 +124,7 @@
         function addEditCancelOption({targetElement}) {
             const cancelOption = document.createElement('span');
             cancelOption.setAttribute('class', 'u-padding-left-10px u-cursor-pointer');
-            cancelOption.innerHTML = 'cancel';
+            cancelOption.innerHTML = 'Cancel';
             cancelOption.addEventListener('click', () => {
                 clearInputElements();
                 targetElement.removeChild(cancelOption);
@@ -135,7 +135,7 @@
         function addDeleteOption({targetElement}) {
             const deleteOption = document.createElement('span');
             deleteOption.setAttribute('class', 'u-padding-left-10px u-cursor-pointer');
-            deleteOption.innerHTML = 'delete';
+            deleteOption.innerHTML = 'Delete';
             deleteOption.addEventListener('click', () => {
                 adapter.removeTodo({
                     id: targetElement.getAttribute('id')

@@ -9,34 +9,15 @@
 <div class="mainContainer">
     <h1 class="u-padding-left-40px">Todo app</h1>
     <form class="c-todo__form u-padding-left-40px u-padding-right-40px">
-        <label for="todoCategory">Choose a category:</label>
-        <br>
-
-        <select name="todoCategory" id="todoCategory" class="u-width-100percent"></select>
-        <br>
-        <br>
-
+        <label for="todoCategory">Select the priority:</label>
+        <select name="todoCategory" id="todoCategory" class="u-width-100percent u-margin-bottom-20px"></select>
         <label for="todoTitle">Title</label>
-        <br>
-
-        <input type="text" id="todoTitle" name="todoTitle" class="u-width-100percent">
-        <br>
-        <br>
-
+        <input type="text" id="todoTitle" name="todoTitle" class="u-width-100percent u-margin-bottom-20px">
         <label for="todoDescription">Description</label>
-        <br>
-
-        <textarea id="todoDescription" name="todoDescription" rows="4" class="u-width-100percent"></textarea>
-        <br>
-        <br>
-
-        <button id="todoFormSubmit" type="button" class="u-width-100percent">Submit</button>
+        <textarea id="todoDescription" name="todoDescription" rows="4" class="u-width-100percent u-margin-bottom-20px"></textarea>
+        <button id="todoFormSubmit" type="button" class="u-width-100percent u-margin-bottom-20px">Submit</button>
     </form>
-    <br>
-
-    <hr />
-    <br>
-
+    <hr class="u-width-90percent"/>
     <ul id="todoList" class="u-list-item-no-styling u-padding-right-40px"></ul>
 </div>
 
