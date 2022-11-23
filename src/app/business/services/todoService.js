@@ -48,7 +48,7 @@
             });
         }
 
-        driverPort.removeTodo = (id) => {
+        driverPort.removeTodo = ({id}) => {
             writer.remove({id: id});
         };
 
