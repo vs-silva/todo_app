@@ -87,7 +87,7 @@
                 const listItem = document.createElement('li');
                 listItem.setAttribute('id', todo.id);
                 listItem.setAttribute('class', 'u-margin-bottom-20px');
-                listItem.innerText = `(${todo.priority})\n${todo.title}\n${todo.description}\n`;
+                listItem.innerText = `(${todo.priority})\n${todo.title}\n${todo.description}\n-\n`;
                 addEditOption({
                     targetElement: listItem
                 });
@@ -122,7 +122,14 @@
         }
 
         function addEditCancelOption({targetElement}) {
-
+            const cancelOption = document.createElement('span');
+            cancelOption.setAttribute('class', 'u-padding-left-10px u-cursor-pointer');
+            cancelOption.innerHTML = 'cancel';
+            cancelOption.addEventListener('click', () => {
+                clearInputElements();
+                targetElement.removeChild(cancelOption);
+            });
+            targetElement.appendChild(cancelOption);
         }
 
         function addDeleteOption({targetElement}) {
@@ -133,6 +140,8 @@
                 adapter.removeTodo({
                     id: targetElement.getAttribute('id')
                 });
+
+                clearInputElements();
 
                 loadTodosByPriority({
                     priorityValue: activePriority.value
