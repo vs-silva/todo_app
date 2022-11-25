@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./src/styles/main.css">
+    <title>Todo APP</title>
+</head>
+<body>
+<div class="mainContainer">
+    <h1 class="u-padding-left-40px">Todo app</h1>
+    <form class="c-todo__form u-padding-left-40px u-padding-right-40px">
+        <label for="todoCategory">Select the priority:</label>
+        <select name="todoCategory" id="todoCategory" class="u-width-100percent u-margin-bottom-20px u-padding-2px"></select>
+        <label for="todoTitle">Title</label>
+        <input type="text" id="todoTitle" name="todoTitle" class="u-width-100percent u-margin-bottom-20px">
+        <label for="todoDescription">Description</label>
+        <textarea id="todoDescription" name="todoDescription" rows="4" class="u-width-100percent u-margin-bottom-20px"></textarea>
+        <button id="todoFormSubmit" type="button" class="u-width-100percent u-margin-bottom-20px u-padding-2px">Submit</button>
+    </form>
+    <hr class="u-width-90percent"/>
+    <ul id="todoList" class="u-list-item-no-styling u-padding-right-40px"></ul>
+</div>
+
+    <script src="src/app/app.js"></script>
+    <script src="src/app/business/entities/todoEntity.js"></script>
+    <script src="src/app/business/entities/priorityEntity.js"></script>
+    <script src="src/app/business/drivenPorts/readerPort.js"></script>
+    <script src="src/app/business/drivenPorts/writerPort.js"></script>
+    <script src="src/app/business/driverPorts/driverPort.js"></script>
+    <script src="src/app/business/services/priorityService.js"></script>
+    <script src="src/app/business/services/todoService.js"></script>
+    <script src="src/app/business/services/service.js"></script>
+    <script src="src/app/data/dbData.js"></script>
+    <script src="src/app/repository/adapters/baseArrayRepositoryAdapter.js"></script>
+    <script src="src/app/repository/adapters/todoArrayRepositoryAdapter.js"></script>
+    <script src="src/app/repository/adapters/priorityArrayRepositoryAdapter.js"></script>
+    <script src="src/app/client/main.js"></script>
+    <script src="src/app/client/adapter.js"></script>
+    <script src="src/index.js"></script>
+
+</body>
+</html>
