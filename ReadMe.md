@@ -8,7 +8,7 @@
 - No pollution of the global namespace
 - Styling ( only necessary to center elements on the page )
 ___
-[Demo](https://vs-silva.github.io/todo_app/)
+- [Demo](https://vs-silva.github.io/todo_app/)
 ___
 - [Post - The todo app](https://vitalinosilva.com/2021/09/06/the-todo-app/)
 ---
